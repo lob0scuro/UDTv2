@@ -12,7 +12,10 @@ mainBP = Blueprint('main', __name__)
 
 
 @mainBP.route('/')
+@login_required
 def index():
+    if not g.user:
+        redirect(url_for('auth.login'))
     return render_template('main/index.html')
 
 

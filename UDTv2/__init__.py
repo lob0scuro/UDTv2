@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from instance.config import *
+from instance.config import DB, DB_PASSWORD, DB_SERVER, DB_USERNAME, SECRET_KEY
 
 db = SQLAlchemy()
 
