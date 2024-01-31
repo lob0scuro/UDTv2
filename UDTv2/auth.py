@@ -1,6 +1,7 @@
 import functools
 from werkzeug.security import check_password_hash, generate_password_hash
-from UDTv2.models import Users
+from UDTv2.models import Users, db
+from sqlalchemy import select
 
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
@@ -16,7 +17,6 @@ def register():
         lastname = request.form['last-name']
         email = request.form['email']
         password = request.form['password']
-        db = Users()
         error = None
 
         if not email:
@@ -31,12 +31,11 @@ def register():
                 db.session.commit()
             except Exception as e:
                 print(f"Error: {e}")
-                db.session.rollback()
             else:
                 return redirect(url_for('auth.login'))
         flash(error)       
 
-    return render_template('register.html')
+    return render_template('auth/register.html')
 
 
 @authBP.route("/login", methods=('GET', 'POST'))
@@ -44,37 +43,35 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        db = Users()
         error = None
-        user = db.query.filter_by(email=email).first()
+        user = Users.query.filter_by(email=email).first()
 
         if user is None:
             error = 'Incorrect email'
-        elif check_password_hash(password) is None:
+        elif check_password_hash(password, user) is None:
             error = 'Incorrect Password'
 
         if error is None:
             session.clear()
-            session['user_id'] = user['id']
+            session['user_id'] = user.id
             return redirect(url_for('index'))
         flash(error)
-    return render_template('login.html')
+    return render_template('auth/login.html')
 
 
 @authBP.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
-    db = Users()
     if user_id is None:
         g.user = None
     else:
-        g.user = db.query.filter_by(id=user_id).first()
+        g.user = Users.query.filter_by(id=user_id).first()
 
 
 @authBP.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('auth.login'))
 
 
 def login_required(view):
