@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h3 class="display-2 pt-3 text-center text-decoration-underline text-light">UDT Dashboard</h3>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3 class="display-3 text-center text-success p-3 mb-2">Start managing your sites.</h3>
+            </div>
+        </div>
+        <div class="row text-center mx-auto">
+            <div class="col mx-5 mb-1 px-3">
+                <div class="btn-group p-3 pb-5 bg-secondary">
+                    <div class="row">
+                        <p class="display-5 text-white mb-4">Site and Unit Utilities</p>
+                        <div class="col-12">
+                            <a class="btn btn-dark border border-2 border-secondary rounded shadow mb-3" href="input_data.html">Input data</a>
+                            <a class="btn btn-dark border border-2 border-secondary rounded shadow mb-3" href="search.html">Look Up</a>
+                        <!-- </div>
+                        <div class="col-6"> -->
+                            <a class="btn btn-dark border border-2 border-secondary rounded shadow mb-3" href="editor.html">Edit Data</a>
+                            <a class="btn btn-dark border border-2 border-secondary rounded shadow mb-3" href="map.html">Location</a>
+                        </div>
+                        <div class="col">
+                            <div class="mb-2">or</div>
+                            <a class="btn w-75 btn-info text-white border border-2 border-secondary rounded shadow" href="">Edit account info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

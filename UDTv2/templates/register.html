@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+
+
+{% block content %}
+    <div class="container mt-4 w-20">
+        <h3 class="text-center text-decoration-underline">Register for UDT</h3>
+        <div class="row w-75 m-auto">
+
+            <form class="bg-secondary mt-3" action="#">
+                <div class="row">
+                    <div class="col mb-3 mt-3">
+                        <label class="form-label" for="first-name">First Name</label>
+                        <input class="form-control" type="text" id="first-name" name="first-name">
+                    </div>
+                    <div class="col mb-3 mt-3">
+                        <label for="last-name" class="form-label">Last Name</label>
+                        <input class="form-control" type="text" name="last-name" id="last-name">
+                    </div>
+                </div>
+                <div class="col mb-3 mt-1">
+                    <label for="email" class="form-label">Email</label>
+                    <input class="form-control" type="email" id="email" name="email">
+                </div>
+                <div class="col mb-3 mt-3">
+                    <label class="form-label" for="password">Password</label>
+                    <input class="form-control" type="password" id="password" name="password">
+                </div>
+                <div class="col mb-3 mt-5">
+                    <button class="btn btn-block btn-success" type="submit">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
