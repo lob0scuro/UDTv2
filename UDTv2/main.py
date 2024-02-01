@@ -60,3 +60,9 @@ def create():
             finally:
                 db.session.commit()
     return render_template('main/create.html')
+
+
+@mainBP.route("/read")
+@login_required
+def read():
+    return render_template('search.html')

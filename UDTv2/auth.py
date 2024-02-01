@@ -16,7 +16,7 @@ def register():
         firstname = request.form['first-name']
         lastname = request.form['last-name']
         email = request.form['email']
-        password = request.form['password']
+        password = generate_password_hash(request.form['password'])
         error = None
 
         if not email:
@@ -26,7 +26,7 @@ def register():
 
         if error is None:
             try:
-                user = Users(name=f"{firstname.capitalize()} {lastname.capitalize()}", email=email, password=generate_password_hash(password))
+                user = Users(name=f"{firstname.capitalize()} {lastname.capitalize()}", email=email, password=password)
                 db.session.add(user)
                 db.session.commit()
             except Exception as e:
@@ -48,7 +48,7 @@ def login():
 
         if user is None:
             error = 'Incorrect email'
-        elif check_password_hash(password, user) is None:
+        elif check_password_hash(user.password, password) is None:
             error = 'Incorrect Password'
 
         if error is None:
