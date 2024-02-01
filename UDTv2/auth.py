@@ -16,7 +16,7 @@ def register():
         firstname = request.form['first-name']
         lastname = request.form['last-name']
         email = request.form['email']
-        password = generate_password_hash(request.form['password'])
+        password = request.form['password']
         error = None
 
         if not email:
@@ -31,9 +31,11 @@ def register():
                 db.session.commit()
             except Exception as e:
                 print(f"Error: {e}")
-            else:
+                db.session.rollback()
+                return redirect(url_for('auth.register'))
+            finally:
                 return redirect(url_for('auth.login'))
-        flash(error)       
+            flash(error)       
 
     return render_template('auth/register.html')
 
@@ -48,7 +50,7 @@ def login():
 
         if user is None:
             error = 'Incorrect email'
-        elif check_password_hash(user.password, password) is None:
+        elif not user.verify_password(password):
             error = 'Incorrect Password'
 
         if error is None:
