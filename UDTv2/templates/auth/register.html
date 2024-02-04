@@ -1,12 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Register{% endblock %}
-
-
 {% block content %}
     <div class="container mt-4 w-20">
         <h3 class="text-center text-decoration-underline">Register for UDT</h3>
         <div class="row w-75 m-auto">
-
             <form class="bg-secondary mt-3" action="{{ url_for('auth.register') }}", method="post">
                 <div class="row">
                     <div class="col mb-3 mt-3">

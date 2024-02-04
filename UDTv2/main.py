@@ -5,20 +5,13 @@ from werkzeug.exceptions import abort
 from UDTv2.auth import login_required
 from UDTv2.models import Users, Sites
 from UDTv2 import db
-
-
-
 mainBP = Blueprint('main', __name__)
-
-
 @mainBP.route('/')
 @login_required
 def index():
     if not g.user:
         redirect(url_for('auth.login'))
     return render_template('main/index.html')
-
-
 @mainBP.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
@@ -40,12 +33,10 @@ def create():
         controller = request.form['controller']
         filters = request.form['filters']
         error = None
-
         if not id:
             error = "site id required"
         elif not name:
             error = "site name required"
-
         if error is not None:
             flash(error)
         else:
@@ -60,15 +51,10 @@ def create():
             finally:
                 db.session.commit()
     return render_template('main/create.html')
-
-
 @mainBP.route('/read')
 @login_required
 def read():
     return render_template('main/search.html')
-
-
-
 @mainBP.route('/results')
 @login_required
 def results():
@@ -78,15 +64,10 @@ def results():
     else:
         results = []
     return render_template('main/search-results.html', results=results)
-
-
 @mainBP.route('/editor')
 @login_required
 def editor():
     return render_template('main/editor.html')
-
-
-
 @mainBP.route('/map')
 @login_required
 def map():
