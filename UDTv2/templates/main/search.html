@@ -1,16 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}Search Sites{% endblock %}
 {% block content %}
-    <div class="container">
-        <h1 class="display-3 text-center mb-3">Search Sites</h1>
-        <div class="row text-center">
-            <div class="col">
-                <form action="{{ url_for('main.read') }}">
-                    <label class="form-label" for="searchBy">Search by site name or site id</label>
-                    <input class="form-control w-50 m-auto" type="text" name="searchBy" id="searchBy">
-                </form>
-            </div>
+    <h1 class="display-3 text-center mb-3">Search Sites</h1>
+    <div class="row text-center mb-5">
+        <div class="col">
+            <label class="form-label" for="searchBy"></label>
+            <input class="form-control w-50 m-auto" type="text" name="q" hx-get="{{url_for('main.results')}}" hx-trigger="keyup changed delay:500ms" hx-target="#results">
         </div>
-        <div class="row" id="searchResults"></div>
+    </div>
+    <div class="row">
+        <table>
+            <thead>
+                <tr>
+                    <th>Site ID</th>
+                    <th>Site Name</th>
+                    <th>City</th>
+                    <th>Coordinates</th>
+                </tr>
+            </thead>
+            <tbody id="results">
+
+            </tbody>
+        </table>
     </div>
 {% endblock %}
