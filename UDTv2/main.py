@@ -6,12 +6,16 @@ from UDTv2.auth import login_required
 from UDTv2.models import Users, Sites
 from UDTv2 import db
 mainBP = Blueprint('main', __name__)
+
+
 @mainBP.route('/')
 @login_required
 def index():
     if not g.user:
         redirect(url_for('auth.login'))
     return render_template('main/index.html')
+
+
 @mainBP.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
@@ -41,7 +45,8 @@ def create():
             flash(error)
         else:
             try:
-                site = Sites(siteID=id, siteName=name, address=address, city=city, state=state, zip=zip, owner=owner, parish=parish, coordinates=coordinates, manufacturer=make, model=model, serial=serial, refrigerant=freon, controller=controller, type_of=typeOf, filters=filters)
+                site = Sites(siteID=id, siteName=name, address=address, city=city, state=state, zip=zip, owner=owner, parish=parish, coordinates=coordinates,
+                             manufacturer=make, model=model, serial=serial, refrigerant=freon, controller=controller, type_of=typeOf, filters=filters)
                 db.session.add(site)
             except Exception as e:
                 error = f"Error: {e}"
@@ -51,23 +56,32 @@ def create():
             finally:
                 db.session.commit()
     return render_template('main/create.html')
+
+
 @mainBP.route('/read')
 @login_required
 def read():
     return render_template('main/search.html')
+
+
 @mainBP.route('/results')
 @login_required
 def results():
     q = request.args.get("q")
     if q:
-        results = Sites.query.filter(Sites.siteID.icontains(q) | Sites.siteName.icontains(q) | Sites.parish.icontains(q) | Sites.filters.icontains(q) | Sites.city.icontains(q)).all()
+        results = Sites.query.filter(Sites.siteID.icontains(q) | Sites.siteName.icontains(
+            q) | Sites.parish.icontains(q) | Sites.filters.icontains(q) | Sites.city.icontains(q)).all()
     else:
         results = []
     return render_template('main/search-results.html', results=results)
+
+
 @mainBP.route('/editor')
 @login_required
 def editor():
     return render_template('main/editor.html')
+
+
 @mainBP.route('/map')
 @login_required
 def map():

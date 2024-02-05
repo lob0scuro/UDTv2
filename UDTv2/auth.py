@@ -6,6 +6,8 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 authBP = Blueprint('auth', __name__, url_prefix='/auth')
+
+
 @authBP.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
@@ -20,7 +22,8 @@ def register():
             error = 'Invalid: password is required'
         if error is None:
             try:
-                user = Users(name=f"{firstname.capitalize()} {lastname.capitalize()}", email=email, password=password)
+                user = Users(
+                    name=f"{firstname.capitalize()} {lastname.capitalize()}", email=email, password=password)
                 db.session.add(user)
                 db.session.commit()
             except Exception as e:
@@ -30,6 +33,8 @@ def register():
             finally:
                 return redirect(url_for('auth.login'))
     return render_template('auth/register.html')
+
+
 @authBP.route("/login", methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
@@ -47,6 +52,8 @@ def login():
             return redirect(url_for('index'))
         flash(error)
     return render_template('auth/login.html')
+
+
 @authBP.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
@@ -54,10 +61,14 @@ def load_logged_in_user():
         g.user = None
     else:
         g.user = Users.query.filter_by(id=user_id).first()
+
+
 @authBP.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('auth.login'))
+
+
 def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):

@@ -5,6 +5,8 @@ from flask_migrate import Migrate
 with open("/etc/config.json", encoding="utf-8") as config_file:
     config = json.load(config_file)
 db = SQLAlchemy()
+
+
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config['SQLALCHEMY_DATABASE_URI'] = config["SQLALCHEMY_DATABASE_URI"]
@@ -18,5 +20,7 @@ def create_app(test_config=None):
     app.register_blueprint(main.mainBP)
     app.add_url_rule('/', endpoint='index')
     return app
+
+
 if __name__ == '__main__':
     app = create_app()
