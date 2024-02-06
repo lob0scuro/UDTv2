@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Page Not Found{% endblock %}
+{% block content %}
+    <h1>404Page</h1>
+    <h3>could not locate {{ data.siteID }}
+    here... <a href="{{ url_for('index') }}">go home</a> little buddy.
+
+
+{% endblock %}

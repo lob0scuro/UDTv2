@@ -76,10 +76,20 @@ def results():
     return render_template('main/search-results.html', results=results)
 
 
-@mainBP.route('/editor')
+@mainBP.route('/editor/<id>', methods=('GET', 'POST'))
 @login_required
-def editor():
-    return render_template('main/editor.html')
+def editor(id):
+    db.session.query()
+    data = Sites.query.get(id)
+    
+    if request.method == 'POST':
+        pass
+    if not data:
+        redirect('found404.html')
+    else:
+        pass
+        
+    return render_template('main/editor.html', data=data)
 
 
 @mainBP.route('/map')

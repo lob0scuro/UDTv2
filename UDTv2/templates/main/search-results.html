@@ -1,6 +1,6 @@
 {% for result in results %}
 <tr>
-    <th scope="row"><small><a href="{{ url_for('main.editor') }}" class="btn btn-sm btn-outline-success fs-6">edit</a></small></th>
+    <th scope="row"><small><a href="{{ url_for('main.editor', id='{{ result.siteID }}') }}" class="btn btn-sm btn-outline-success fs-6">edit</a></small></th>
     <td>{{ result.siteID }}</td>
     <td>{{ result.siteName }}</td>
     <td>{{ result.city }}</td>
