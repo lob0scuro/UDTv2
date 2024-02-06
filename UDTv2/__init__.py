@@ -2,9 +2,9 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import json
 from flask_migrate import Migrate
-# from instance import config
+#from instance.conf import config
 with open("/etc/config.json", encoding="utf-8") as config_file:
-    config = json.load(config_file)
+   config = json.load(config_file)
 db = SQLAlchemy()
 
 
