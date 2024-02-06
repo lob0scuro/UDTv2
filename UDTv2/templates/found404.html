@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}Page Not Found{% endblock %}
 {% block content %}
-    <h1>404Page</h1>
-    <h3>could not locate {{ data.siteID }}
-    here... <a href="{{ url_for('index') }}">go home</a> little buddy.
+    <div class="row text-center mt-5 text-warning bg-danger w-50 p-3 m-auto">
+        <div class="col">
+            <h1>404Page</h1>
+            <h3>could not locate</h3>
+            here... <a class="link-success" href="{{ url_for('index') }}">go home</a> lil buddy.
+        </div>
+    </div>
 
 
 {% endblock %}

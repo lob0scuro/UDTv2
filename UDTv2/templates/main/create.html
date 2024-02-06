@@ -5,7 +5,7 @@
         <h3 class="display-3 text-center mt-3">Site Log Entry</h3>
     </div>
     <div class="container">
-        <form action="#", method="post">
+        <form action="{{ url_for('main.create') }}", method="post">
             <div class="form-group mt-3 border p-3 w-75 m-auto">
                 <legend class="text-center text-success">Site Data</legend>
                 <div class="row">
