@@ -1,13 +1,40 @@
 {% extends 'base.html' %}  
 {% block title %}Data Input Form{% endblock %}
 {% block content %}
-    <div class="container-fluid">
-        <h3 class="display-3 text-center mt-3">Site Log Entry</h3>
+<div class="row mt-4 gx-0">
+    <div class="col-3 pt-4">
+        <p class="text-info text-end">
+            Input site data
+            <div class="text-secondary text-end">
+                site ID and site name are 
+                mandatory feilds and will 
+                not allow the form to be 
+                submitted if null. All 
+                other feilds are optional. 
+                Searching data collectively, 
+                e.g. by city or parish, 
+                requires all entries be filled
+                out.
+
+            </div>
+        </p>
+        <p class="text-info text-end">
+            Log HVAC data
+            <div class="text-secondary text-end">
+                Unit tags can be found on
+                the the inside of unit somwhere 
+                on the electrical board, If 
+                outside tag is missing or worn.
+                Some sites have the unit data 
+                etched on the sites data plate
+                inside of the shelter, as well.
+            </div>
+        </p>
     </div>
-    <div class="container">
+    <div class="col-9">
         <form action="{{ url_for('main.create') }}", method="post">
             <div class="form-group mt-3 border p-3 w-75 m-auto">
-                <legend class="text-center text-success">Site Data</legend>
+                <legend class="text-center text-info">Site Data</legend>
                 <div class="row">
                     <div class="col">
                         <label class="form-label" for="siteID">Site ID</label>
@@ -59,7 +86,7 @@
                 </div>
             </div>
             <div class="form-group mt-3 border p-3 w-75 m-auto">
-                <legend class="text-center text-success">Unit Data</legend>
+                <legend class="text-center text-info">Unit Data</legend>
                 <div class="row">
                 </div>
                 <label class="form-label" for="make">Unit Manufacturer</label>
@@ -97,8 +124,9 @@
                 </div>
                 <label class="form-label" for="controller">Controller Model No.</label>
                 <input class="form-control" type="text" id="controller" name="controller">
-                <button class="btn btn-success mt-4 w-100" type="input">Send</button>
+                <button class="btn btn-info text-black mt-4 w-100" type="input">Send</button>
             </div>
         </form>
     </div>
+</div>
 {% endblock %}

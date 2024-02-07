@@ -71,24 +71,6 @@ def create():
     return render_template('main/create.html')
 
 
-@mainBP.route('/search')
-@login_required
-def search():
-    return render_template('main/search.html')
-
-
-@mainBP.route('/results')
-@login_required
-def results():
-    q = request.args.get("q")
-    if q:
-        results = Sites.query.filter(Sites.siteID.icontains(q) | Sites.siteName.icontains(
-            q) | Sites.parish.icontains(q) | Sites.filters.icontains(q) | Sites.city.icontains(q)).all()
-    else:
-        results = []
-    return render_template('main/search-results.html', results=results)
-
-
 @mainBP.route('/editor/<id>', methods=('GET', 'POST'))
 @login_required
 def editor(id):

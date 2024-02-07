@@ -1,15 +1,14 @@
 {% extends 'base.html' %}  
 {% block title %}Maps{% endblock %}
 {% block content %}
-    <div class="container">
-        <div class="row text-center mt-3">
-            <h3 class="display-4 text-decoration-underline">Site Map</h3>
-        </div>
-    </div>
-    <div class="container mt-1 border bg-warning fit">
-        <div class="row text-center align-items-center">
-            <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="https://www.google.com/maps/d/u/0/embed?mid=1iVn8SOtoD0SwNcKPWJknpFG1xACP9wM&ehbc=2E312F" width="70%" height="500"></iframe>
+    <div class="row align-middle">
+        <div class="col text-center mt-1">
+            <h3 class="mx-auto">Site Map for {{ g.user.name }}</h3>
+        
+            <div class="border-5 border-info">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item" src="https://www.google.com/maps/d/u/0/embed?mid=1iVn8SOtoD0SwNcKPWJknpFG1xACP9wM&ehbc=2E312F" width="75%" height="425px"></iframe>
+                </div>
             </div>
         </div>
     </div>
