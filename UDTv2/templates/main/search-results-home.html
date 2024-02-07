@@ -1,12 +1,7 @@
 {% for result in results %}
 <tr class="text-start text-wrap w-50" scope="row">
-    <!--<th scope="row">
-        <div class="btn-group btn-group-sm">
-            <a href="{{ url_for('main.editor', id=(result.siteID)) }}" class="btn btn-sm btn-outline-info text-white fs-6">view</a>
-            <a href="{{ url_for('main.editor', id=(result.siteID)) }}" class="btn btn-sm btn-outline-info fs-6">edit</a>
-        </div>
-    </th>-->
-    <td><a class="link-info" href="{{ url_for('main.editor', id=(result.siteID)) }}">{{ result.siteID }}</a></td>
+    <td><a class="text-decoration-none" href="{{ url_for('main.editor', id=result.siteID) }}"><i class="fa-solid fa-pencil"></i></td>
+    <td><a class="link-info" href="{{ url_for('main.view', id=(result.siteID)) }}">{{ result.siteID }}</a></td>
     <td>{{ result.siteName }}</td>
     <td>{{ result.city }}</td>
     <td class="d-none d-sm-block">{{ result.coordinates }}</td>

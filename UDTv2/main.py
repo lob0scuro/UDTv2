@@ -70,6 +70,13 @@ def create():
                 db.session.commit()
     return render_template('main/create.html')
 
+@mainBP.route('/view/<id>', methods=('GET', 'POST'))
+@login_required
+def view(id):
+    data = Sites.query.get(id)
+    return render_template('main/view.html', data=data)
+
+
 
 @mainBP.route('/editor/<id>', methods=('GET', 'POST'))
 @login_required
@@ -95,7 +102,7 @@ def editor(id):
             data.controller = request.form['controller']
 
             db.session.commit()
-            return redirect(url_for('main.search'))
+            return redirect(url_for('main.editor', id=data.siteID))
         except Exception as e:
             flash(f"Error: {e}")
             db.session.rollback()
