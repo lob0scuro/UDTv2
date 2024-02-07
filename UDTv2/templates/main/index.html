@@ -4,12 +4,12 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <h3 class="display-2 pt-3 text-center text-success">UDT Dashboard</h3>
+            <h3 class="display-3 pt-3 text-center text-black bg-dark fw-bold">UDT Dashboard</h3>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <h3 class="display-4 text-center text-light p-3 mb-2">Start managing your sites.</h3>
+            <h3 class="display-6 text-center text-light">Start managing your sites.</h3>
         </div>
     </div>
 </div>
@@ -17,18 +17,16 @@
 
 
 
-<div class="container-lg">
-    <div class="row mx-auto mb-3">
-        <div class="col-12 col-sm-6">
-            <div class="btn-group" style="width: 50%;" role="group">
-                <a type="button" class="btn btn-outline-success text-center text-nowrap" href="{{ url_for('main.create') }}">Log</a>         
-                <a type="button" href="{{ url_for('main.map') }}" class="btn btn-outline-success">Map</a>
-                <a type="button" class=" active btn btn-outline-success text-center text-nowrap" href="{{ url_for('main.search') }}">Search</a>
+<div class="container">
+    <div class="row">
+        <div class="col-12 mx-auto">
+            <div class="btn-group btn-group-md pt-2" style="width: 50%;" role="group">
+                <a type="button" class="btn btn-outline-info text-center text-nowrap" href="{{ url_for('main.create') }}">Log</a>         
+                <a type="button" href="{{ url_for('main.map') }}" class="btn btn-outline-info">Map</a>
+                <a type="button" class="btn btn-outline-info text-center text-nowrap" href="{{ url_for('main.search') }}">Search</a>
             </div>
         </div>
-        <div class="col-12 col-sm-6">
-            <!--<div class="col"></div>-->
-            <!--<div class="col-10 border-bottom">-->
+        <div class="col-12 mx-auto">
             <label class="form-label" for="searchBy"></label>
             <input class="form-control w-50 me-auto" placeholder="... search" type="text" name="q" hx-get="{{url_for('main.home_results')}}" hx-trigger="load, keyup changed delay:400ms" hx-target="#results-home">
             <hr>
@@ -36,18 +34,17 @@
                 <table class="table table-borderless table-sm table-dark table-stripe mx-auto">
                     <thead class="text-start">
                         <tr> 
-                            <th class="text-warning" scope="col"></th>
-                            <th class="text-warning" scope="col">Site ID</th>
-                            <th class="text-warning" scope="col">Site Name</th>
-                            <th class="text-warning" scope="col">City</th>
-                            <th class="text-warning" scope="col">Coordinates</th>
+                            <th class="text-info" scope="col"></th>
+                            <th class="text-white bg-black" scope="col">Site ID</th>
+                            <th class="text-white bg-black" scope="col">Site Name</th>
+                            <th class="text-white bg-black" scope="col">City</th>
+                            <th class="text-white bg-black" scope="col">Coordinates</th>
                         </tr>
                     </thead>
                     <tbody id="results-home">
                     </tbody>
                 </table>
             </div>
-            <!--</div>-->
         </div>
     </div>
 </div>
