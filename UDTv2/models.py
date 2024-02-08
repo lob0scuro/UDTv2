@@ -9,6 +9,8 @@ class Users(UserMixin, db.Model):
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(50), nullable=False, unique=True)
     password_hash = db.Column(db.String(1024), nullable=False)
+    # user can have many sites
+    siteRef = db.relationship('Sites', backref='tec')
 
     @property
     def password(self):
@@ -43,6 +45,8 @@ class Sites(db.Model):
     controller = db.Column(db.String(50))
     type_of = db.Column(db.String(25))
     filters = db.Column(db.String(50))
+    # Froeign Key for User
+    techID = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def __repr__(self):
         return f"Site: {self.siteID} {self.siteName}"
