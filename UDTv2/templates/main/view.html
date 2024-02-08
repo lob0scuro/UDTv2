@@ -2,7 +2,7 @@
 {% block title %}Site {{ data.siteID }}{% endblock %}
 {% block content %}
 <div class="row row-cols-2 mx-auto" style="width: 80%; margin-top: 2em;">
-    <div class="col-8 border border-4 p-3 bg-black">
+    <div class="col-12 col-sm-8 border border-4 p-3 bg-black">
         <h1 class="display-2 text-start mt-3 text-white">VZW <span class="text-info">{{ data.siteName }}</span></h1>
         <h3 class="display-5 text-start">(<span class="text-info">{{ data.siteID }}</span>)</h3>
         <div class="bg-black me-5 text-dark p-2"><small class="fs-4 me-4">{{ '' if data.owner == 'None' else data.owner }}</small><small class="fs-5 bg-black">{{ data.type_of }}</small></div>
@@ -14,7 +14,7 @@
         <a class="link-warning" href="{{ url_for('main.map') }}">{{ data.coordinates }}</a>
         
     </div>
-    <div class="col-4 p-2 border border-4 border-black bg-secondary">
+    <div class="col-12 col-sm-4 p-2 border border-4 border-black bg-secondary">
         <h1 class="display-3 text-center text-black mt-3">Unit</h1>
         <br>
         <p class="text-start text-info bg-black ps-2 w-75 mx-auto"><strong>Manufacturer: </strong><span class="text-white">{{ data.manufacturer }}</span></p>

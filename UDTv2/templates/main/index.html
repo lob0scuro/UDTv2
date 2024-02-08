@@ -20,7 +20,7 @@
 <div class="container">
     <div class="row">   
         <div class="col-12 mx-auto">
-            <input class="form-control w-50 me-auto border-black border-5 rounded-pill" placeholder="search... " type="text" name="q" hx-get="{{url_for('main.home_results')}}" hx-trigger="load, keyup changed delay:400ms" hx-target="#results-home">
+            <input class="form-control ms-4 w-50 me-auto border-black border-5 rounded-pill" placeholder="search... " type="text" name="q" hx-get="{{url_for('main.home_results')}}" hx-trigger="load, keyup changed delay:400ms" hx-target="#results-home">
             
             <div class="table-responsive-lg mt-1">
                 <table class="table table-borderless table-sm table-dark table-stripe mx-auto">
