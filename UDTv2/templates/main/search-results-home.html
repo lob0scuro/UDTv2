@@ -1,9 +1,9 @@
 {% for result in results %}
 <tr class="text-start text-wrap w-50" scope="row">
-    <td><a class="text-decoration-none" href="{{ url_for('main.editor', id=result.siteID) }}"><i class="fa-solid fa-pencil"></i></td>
-    <td><a class="link-info" href="{{ url_for('main.view', id=(result.siteID)) }}">{{ result.siteID }}</a></td>
+    <td><a class="link-secondary" href="{{ url_for('main.editor', id=result.siteID) }}"><i class="fa-solid fa-pencil"></i></a> | <a class="link-light" href="{{ url_for('main.view', id=result.siteID) }}"><i class="fa-solid fa-tower-observation"></a></i></td>
+    <td>{{ result.siteID }}</td>
     <td>{{ result.siteName }}</td>
     <td>{{ result.city }}</td>
-    <td class="d-none d-sm-block">{{ result.coordinates }}</td>
+    <td class="d-none d-sm-block"><a href="http://google.com/maps/dir/?api=1&basemap=satellite&destination={{ result.coordinates }}" class="text-info">{{ result.coordinates }}</a></td>
 </tr>
 {% endfor %}

@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row row-cols-2 mx-auto" style="width: 80%; margin-top: 2em;">
     <div class="col-12 col-sm-8 border border-4 p-3 bg-black">
-        <h1 class="display-2 text-start mt-3 text-white">VZW <span class="text-info">{{ data.siteName }}</span></h1>
+        <h1 class="display-4 text-start mt-3 text-white">VZW <span class="text-info display-2">{{ data.siteName }}</span></h1>
         <h3 class="display-5 text-start">(<span class="text-info">{{ data.siteID }}</span>)</h3>
         <div class="bg-black me-5 text-dark p-2"><small class="fs-4 me-4">{{ '' if data.owner == 'None' else data.owner }}</small><small class="fs-5 bg-black">{{ data.type_of }}</small></div>
         <p class="text-secondary">
@@ -11,7 +11,7 @@
             {{ data.city }}, {{ data.state }}, {{ data.zip }} <br>
             {{ data.parish }} {{ 'County' if data.state == 'TX' else 'Parish' }}
         </p>
-        <a class="link-warning" href="{{ url_for('main.map') }}">{{ data.coordinates }}</a>
+        <a class="link-warning" href="http://google.com/maps/dir/?api=1&basemap=satellite&destination={{ data.coordinates }}">{{ data.coordinates }}</a>
         
     </div>
     <div class="col-12 col-sm-4 p-2 border border-4 border-black bg-secondary">
@@ -35,97 +35,6 @@
 </div>
       
 
- <!-- <form action="{{ url_for('main.editor', id=data.siteID) }}" method="post">
-        <div class="form-group mt-3 border p-3 w-75 m-auto">
-            <legend class="text-center text-info">Location Data</legend>
-            <div class="row">
-                <div class="col">
-                    <label class="form-label" for="siteID">Site ID</label>
-                    <input class="form-control mb-2" type="text" id="siteID" name="siteID" value="{{ data.siteID }}">
-                </div>
-                <div class="col">
-                    <label class="form-label" for="siteName">Site Name</label>
-                    <input class="form-control mb-2" type="text" id="siteName" name="siteName" value="{{ data.siteName }}">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <label class="form-label" for="address">Address</label>
-                    <input class="form-control mb-2" type="text" id="address" name="address" value="{{ data.address }}">
-                </div>
-                <div class="col-6">
-                    <label class="form-label" for="city">City</label>
-                    <input class="form-control mb-2" type="text" id="city" name="city" value="{{ data.city }}">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <label class="form-label" for="state">State</label>
-                    <input class="form-control mb-2" type="text" id="state" name="state" value="{{ data.state }}">
-                </div>
-                <div class="col-6">
-                    <label class="form-label" for="zip">Zip</label>
-                    <input class="form-control mb-2" type="text" id="zip" name="zip" value="{{ data.zip}}">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6 w-max-content">
-                    <label class="form-label" for="parish">Parish</label>
-                    <input class="form-control mb-2" type="text" id="parish" name="parish" value="{{ data.parish }}">
-                </div>
-                <div class="col-6">
-                    <label class="form-label" for="coordinates">Coordinates</label>
-                    <input class="form-control mb-2" type="text" id="coordinates" name="coordinates" value="{{ data.coordinates }}">
-                </div>
-            </div>
-            <div class="row g-5">
-                <div class="col">
-                    <label class="form-label" for="typeOf">Type</label>
-                    <input class="form-control mb-2" name="typeOf" id="typeOf" type="text" value="{{ data.type_of }}">
-                </div>
-                <div class="col">
-                    <label class="form-label" for="owner">Owner</label>
-                    <input class="form-control mb-2" type="text" id="owner" name="owner" value="{{ data.owner }}">              
-                </div>
-            </div>
-        </div>
-        <div class="form-group mt-3 border p-3 w-75 m-auto">
-            <legend class="text-center text-info">Unit Data</legend>
-            <div class="row">
-                <div class="col">
-                    <label class="form-label" for="make">Unit Manufacturer</label>
-                    <input class="form-control mb-2" type="text" id="make" name="manufacturer" value="{{ data.manufacturer }}">
-                </div>
-                <div class="col">
-                    <label class="form-label" for="filters">Filter Size</label>
-                    <input class="form-control mb-2" id="filters" name="filters" type="text" value="{{ data.filters }}">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label class="form-label" for="model">Unit Model No.</label>
-                    <input class="form-control mb-2 mb-2" type="text" id="model" name="model" value="{{ data.model }}">
-                </div>
-                <div class="col">
-                    <label class="form-label" for="freon">Refrigerant</label>
-                    <input class="form-control mb-2" id="freon" type="text" name="freon" value="{{ data.refrigerant }}">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label class="form-label" for="serial">Unit Serial No.</label>
-                    <input class="form-control mb-2" type="text" id="serial" name="serial" value="{{ data.serial }}">
-                </div>
-                <div class="col">
-                    <label class="form-label" for="controller">Controller Model No.</label>
-                    <input class="form-control mb-2" type="text" id="controller" name="controller" value="{{ data.controller }}">
-                </div>
-            </div>
-        </div>
-        
-    </form>  -->
-
-
-
+ 
 
 {% endblock %}

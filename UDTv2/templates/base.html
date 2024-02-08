@@ -26,7 +26,7 @@
                         <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{{ url_for('main.index') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/create' %}active{% endif %}" href="{{ url_for('main.create') }}">Input</a>
+                        <a class="nav-link {% if request.path == '/create' %}active{% endif %}" href="{{ url_for('main.create') }}"><i class="fa-regular fa-square-plus text-info p-1"></i>Add Site</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/map' %}active{% endif %}" href="{{ url_for('main.map') }}">Map</a>
