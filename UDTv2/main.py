@@ -22,10 +22,10 @@ def index():
 def home_results():
     q = request.args.get("q")
     if q:
-        results = Sites.query.filter(Sites.siteID.icontains(q) | Sites.siteName.icontains(
-            q) | Sites.parish.icontains(q) | Sites.filters.icontains(q) | Sites.city.icontains(q)).all()
+        results = Sites.query.filter(db.and_(Sites.siteID.icontains(q) | Sites.siteName.icontains(
+            q) | Sites.parish.icontains(q) | Sites.filters.icontains(q) | Sites.city.icontains(q), Sites.techID == g.user.id)).all()
     else:
-        results = Sites.query.limit(15)
+        results = Sites.query.filter_by(techID=g.user.id).limit(10)
     return render_template('main/search-results-home.html', results=results)
 
 
@@ -59,7 +59,7 @@ def create():
         else:
             try:
                 site = Sites(siteID=id, siteName=name, address=address, city=city, state=state, zip=zip, owner=owner, parish=parish, coordinates=coordinates,
-                             manufacturer=make, model=model, serial=serial, refrigerant=freon, controller=controller, type_of=typeOf, filters=filters)
+                             manufacturer=make, model=model, serial=serial, refrigerant=freon, controller=controller, type_of=typeOf, filters=filters, techID=g.user.id)
                 db.session.add(site)
             except Exception as e:
                 error = f"Error: {e}"
