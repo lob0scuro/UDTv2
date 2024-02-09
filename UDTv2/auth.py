@@ -13,21 +13,24 @@ def register():
     if request.method == 'POST':
         firstname = request.form['first-name']
         lastname = request.form['last-name']
-        email = request.form['email']
+        email = request.form['e-mail']
+        nocPin = request.form['nocPin']
         password = request.form['password']
         error = None
         if not email:
             error = 'Invalid: email is required'
+            flash(error)
         elif not password:
             error = 'Invalid: password is required'
+            flash(error)
         if error is None:
             try:
                 user = Users(
-                    name=f"{firstname.capitalize()} {lastname.capitalize()}", email=email, password=password)
+                    first_name=firstname, last_name=lastname, email=email, password=password, nocPin=nocPin)
                 db.session.add(user)
                 db.session.commit()
             except Exception as e:
-                print(f"Error: {e}")
+                flash(f"Error: {e}")
                 db.session.rollback()
                 return redirect(url_for('auth.register'))
             finally:

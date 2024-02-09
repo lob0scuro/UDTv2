@@ -74,7 +74,12 @@ def create():
 @login_required
 def view(id):
     data = Sites.query.get(id)
+    if request.method == 'POST':
+        pass
     return render_template('main/view.html', data=data)
+
+
+
 
 
 

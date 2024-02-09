@@ -11,26 +11,45 @@
             {{ data.city }}, {{ data.state }}, {{ data.zip }} <br>
             {{ data.parish }} {{ 'County' if data.state == 'TX' else 'Parish' }}
         </p>
-        <a class="link-warning" href="http://google.com/maps/dir/?api=1&basemap=satellite&destination={{ data.coordinates }}">{{ data.coordinates }}</a>
-        
+        <div class="row">
+            <div class="col-6">
+                <a class="link-warning" href="http://google.com/maps/dir/?api=1&basemap=satellite&destination={{ data.coordinates }}">{{ data.coordinates }}</a>
+            </div>
+            <div class="col-6">
+                <a class="btn btn-warning" href="https://google.com"><i class="fa-solid fa-phone"></i> NOC IVR</a>
+            </div>
+        </div>        
     </div>
-    <div class="col-12 col-sm-4 p-2 border border-4 border-black bg-secondary">
-        <h1 class="display-3 text-center text-black mt-3">Unit</h1>
-        <br>
-        <p class="text-start text-info bg-black ps-2 w-75 mx-auto"><strong>Manufacturer: </strong><span class="text-white">{{ data.manufacturer }}</span></p>
-        <p class="text-start text-info bg-black ps-2 w-75 mx-auto"><strong>Model: </strong><span class="text-white">{{ data.model }}</span></p>
-        <p class="text-start text-info bg-black ps-2 w-75 mx-auto"><strong>Serial: </strong><span class="text-white">{{ data.serial }}</span></p>
-        <p class="text-start text-info bg-black ps-2 w-75 mx-auto"><strong>Controller: </strong><span class="text-white">{{ data.controller }}</span></p>
-        <p class="text-start text-info bg-black ps-2 w-75 mx-auto"><strong>Freon: </strong><span class="text-white">{{ data.refrigerant }}</span></p>
-        <p class="text-start text-info bg-black ps-2 w-75 mx-auto"><strong>Filter Size: </strong><span class="text-white">{{ data.filters }}</span></p>
-
+    <div class="col-12 col-sm-4">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Unit Details
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <!-- <div class="col-12 col-sm-4 p-2 border border-4 border-black bg-secondary"> -->
+                        <!-- <h1 class="display-3 text-center text-black mt-3">Unit</h1> -->
+                        <!-- <br> -->
+                        <p class="text-start text-info bg-black ps-2 w-75 mx-auto"><strong>Manufacturer: </strong><span class="text-white">{{ data.manufacturer }}</span></p>
+                        <p class="text-start text-info bg-black ps-2 w-75 mx-auto"><strong>Model: </strong><span class="text-white">{{ data.model }}</span></p>
+                        <p class="text-start text-info bg-black ps-2 w-75 mx-auto"><strong>Serial: </strong><span class="text-white">{{ data.serial }}</span></p>
+                        <p class="text-start text-info bg-black ps-2 w-75 mx-auto"><strong>Controller: </strong><span class="text-white">{{ data.controller }}</span></p>
+                        <p class="text-start text-info bg-black ps-2 w-75 mx-auto"><strong>Freon: </strong><span class="text-white">{{ data.refrigerant }}</span></p>
+                        <p class="text-start text-info bg-black ps-2 w-75 mx-auto"><strong>Filter Size: </strong><span class="text-white">{{ data.filters }}</span></p>
+                    <!-- </div> -->
+                    <div class="row text-center mt-3">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div class="row text-center mt-3">
     <div class="btn-group btn-group-lg w-75 mx-auto">
         <a class="btn btn-outline-light" href="{{ url_for('main.index') }}">Back</a>
-        <a class="btn btn-outline-info" href="{{ url_for('main.editor', id=data.siteID) }}">Edit</a>
-        
+        <a class="btn btn-outline-info" href="{{ url_for('main.editor', id=data.siteID) }}">Edit</a>                        
     </div>
 </div>
       

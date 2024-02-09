@@ -6,11 +6,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 class Users(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(100), nullable=False)
+    first_name = db.Column(db.String(100), nullable=False)
+    last_name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(50), nullable=False, unique=True)
     password_hash = db.Column(db.String(1024), nullable=False)
+    nocPin = db.Column(db.String(6), nullable=False)
     # user can have many sites
-    siteRef = db.relationship('Sites', backref='tec')
+    mySites = db.relationship('Sites', backref='tec')
 
     @property
     def password(self):
