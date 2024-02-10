@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Edit User {{ g.user.first_name }}{% endblock %}
+
+{% block content %}
+
+<div class="text-center">
+    <div class="row">
+        <div class="col ps-5">
+            <h3 class="display-3">{{ g.user.first_name }} {{ g.user.last_name }}</h3>
+            <p class="fs-3 ps-3 text-info">{{ g.user.email }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col ps-5">
+            <div class="text-white ps-3 fs-2">NOC IVR PIN: {{ g.user.nocPin }}</div>
+        </div>
+    </div>
+    <a href="{{ url_for('main.edit_user') }}" class=" mt-4 btn btn-outline-info">Edit</a>
+</div>
+
+
+{% endblock %}

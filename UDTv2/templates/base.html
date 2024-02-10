@@ -16,7 +16,7 @@
             <div class="row">
                 <a class="navbar-brand text-white" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/icon.jpg') }}" alt="" width="40" height="30"><strong>UDT<span class="text-dark">v2</span></strong></a>
             </div>
-            <span class="nav-link disabled ms-2">Hello, <span class=" ps-1 text-info">{{ g.user['first_name'] }}</span></span><a class=" ps-1 link-light" href="#"><i class=" ms-1 fa-regular fa-user"></i></a>
+            <span class="nav-link disabled ms-2">Hello, <span class=" ps-1 text-info">{{ g.user['first_name'] }}</span></span><a class=" ps-1 link-light" href="{{ url_for('main.view_user') }}"><i class=" ms-1 fa-regular fa-user"></i></a>
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler">
             <span class="navbar-toggler-icon"></span>
             </button>         

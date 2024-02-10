@@ -122,7 +122,27 @@ def editor(id):
 @mainBP.route('/map')
 @login_required
 def map():
-    return render_template('main/map.html')
+    maps = {
+        1: None,
+        2: None,
+        3: "https://www.google.com/maps/d/u/0/embed?mid=1iVn8SOtoD0SwNcKPWJknpFG1xACP9wM&ehbc=2E312F",
+        4: "https://www.google.com/maps/d/u/0/embed?mid=1e1_2nvDkn4pnI7EZCqOQUxLHuKfew3M&ehbc=2E312F"
+    }
+    
+    return render_template('main/map.html', mapObj=maps[g.user.id])
+
+
+@mainBP.route("/view_user")
+@login_required
+def view_user():
+    return render_template('main/view_user.html')
+
+@mainBP.route("/edit_user", methods=('GET', 'POST'))
+@login_required
+def edit_user():
+    if request.method == 'POST':
+        return redirect(url_for('index'))
+    return render_template('main/edit_user.html')
 
 
 @mainBP.route('/found404')

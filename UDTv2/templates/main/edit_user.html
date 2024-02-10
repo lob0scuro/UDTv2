@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Edit user {{ g.user.id }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <form class="w-75 mx-auto" action="{{ url_for('main.edit_user') }}" method="post">
+        <div class="row">
+            <label class="form-label pt-3 fs-2" for="first_name">First Name</label>
+            <input class="form-control" type="text" value="{{ g.user.first_name }}">
+        </div>
+        <div class="row">
+            <label class="form-label pt-3 fs-2" for="first_name">Last Name</label>
+            <input class="form-control" type="text" value="{{ g.user.last_name }}">
+        </div>
+        <div class="row">
+            <label class="form-label pt-3 fs-2" for="first_name">Noc IVR Pin</label>
+            <input class="form-control" type="text" value="{{ g.user.nocPin }}">
+        </div>
+        <div class="row">
+            <input type="submit" class="btn btn-outline-info mt-5 w-25 mx-auto" value="Submit">
+        </div>
+    </form>
+</div>
+
+{% endblock %}
