@@ -3,13 +3,19 @@
 {% block content %}
     <div class="row align-middle">
         <div class="col text-center mt-1">
-            <h3 class="mx-auto">Site Map for {{ g.user.name }}</h3>
+            {% if mapObj %}
+            <h3 class="mx-auto">Site Map for {{ g.user.first_name }}</h3>
         
             <div class="border-5 border-info">
                 <div class="embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" src="{{ mapObj }}" width="75%" height="425px"></iframe>
+                    <iframe class="embed-responsive-item" src="{{ mapObj }}" width="80%" height="650px"></iframe>
                 </div>
             </div>
+            {% else %}
+            <h3>No map available</h3>
+            <!-- need to create a page for displaying all site maps -->
+            <a href="#">view all site maps here</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
